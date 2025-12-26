@@ -30,6 +30,10 @@ altair==5.2.0                  # Declarative visualization
 matplotlib==3.8.2              # Statistical plots
 pandas==2.2.0                  # Data manipulation untuk visualisasi
 
+# ===== EXCEL/CSV EXPORT =====
+xlsxwriter==3.1.9              # Excel file writer untuk pandas export
+openpyxl==3.1.2                # Excel file reader/writer (alternative engine)
+
 # ===== HTTP CLIENT (untuk GitHub Models) =====
 httpx==0.26.0                  # Async HTTP client
 requests==2.31.0               # Sync HTTP client (fallback)
