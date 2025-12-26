@@ -38,7 +38,7 @@ requests==2.31.0               # Sync HTTP client (fallback)
 pyright==1.1.349               # Static type checker untuk Python
 
 # ===== DEVELOPMENT DEPENDENCIES (Optional) =====
-pytest==8.0.0                  # Testing framework
+pytest==7.4.4                  # Testing framework (compatible with pytest-asyncio)
 pytest-asyncio==0.23.4         # Async support untuk pytest
 black==24.1.1                  # Code formatter
 flake8==7.0.0                  # Linter
