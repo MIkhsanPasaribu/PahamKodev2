@@ -1,0 +1,210 @@
+// Prisma Schema untuk PahamKode
+// Database: Azure Cosmos DB (MongoDB API)
+
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = -1
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Model Pengguna (Mahasiswa & Admin)
+model User {
+  id                String              @id @default(auto()) @map("_id") @db.ObjectId
+  email             String              @unique
+  nama              String?
+  passwordHash      String              @map("password_hash") // Untuk autentikasi
+  role              String              @default("mahasiswa") // mahasiswa, admin, pengajar
+  status            String              @default("aktif") // aktif, suspended
+  tingkatKemahiran  String              @default("pemula") @map("tingkat_kemahiran") // pemula, menengah, mahir
+  createdAt         DateTime            @default(now()) @map("created_at")
+
+  // RELATIONS COMMENTED OUT - Cosmos DB compatibility
+  // Prisma generates REMOVE operator for relations which Cosmos DB doesn't support
+  // Use manual queries with idMahasiswa foreign key instead
+  // submisiError      SubmisiError[]
+  // polaError         PolaError[]
+  // progressBelajar   ProgressBelajar[]
+
+  @@map("users")
+}
+
+// Model Submisi Error (Core untuk Semantic Error Analysis)
+model SubmisiError {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  idMahasiswa        String    @map("id_mahasiswa") @db.ObjectId
+  kode               String
+  pesanError         String    @map("pesan_error")
+  bahasa             String    @default("python") // python, javascript, java, dll
+  tipeError          String?   @map("tipe_error")
+  penyebabUtama      String?   @map("penyebab_utama")
+  kesenjanganKonsep  String?   @map("kesenjangan_konsep")
+  levelBloom         String?   @map("level_bloom") // Remember, Understand, Apply, Analyze, Evaluate, Create
+  penjelasan         String?
+  saranPerbaikan     String?   @map("saran_perbaikan")
+  topikTerkait       String[]  @map("topik_terkait") @default([])
+  saranLatihan       String?   @map("saran_latihan")
+  createdAt          DateTime  @default(now()) @map("created_at")
+
+  // RELATION COMMENTED OUT - Cosmos DB compatibility
+  // mahasiswa          User      @relation(fields: [idMahasiswa], references: [id], onDelete: Cascade)
+
+  @@index([idMahasiswa])
+  @@index([tipeError])
+  @@map("submisi_error")
+}
+
+// Model Pola Error (Pattern Mining)
+model PolaError {
+  id                       String    @id @default(auto()) @map("_id") @db.ObjectId
+  idMahasiswa              String    @map("id_mahasiswa") @db.ObjectId
+  jenisKesalahan           String    @map("jenis_kesalahan")
+  frekuensi                Int       @default(1)
+  kejadianPertama          DateTime? @map("kejadian_pertama")
+  kejadianTerakhir         DateTime? @default(now()) @map("kejadian_terakhir")
+  deskripsiMiskonsepsi     String?   @map("deskripsi_miskonsepsi")
+  sumberDayaDirekomendasikan String[] @map("sumber_daya_direkomendasikan") @default([])
+  createdAt                DateTime  @default(now()) @map("created_at")
+  updatedAt                DateTime  @updatedAt @map("updated_at")
+
+  // RELATION COMMENTED OUT - Cosmos DB compatibility
+  // mahasiswa                User      @relation(fields: [idMahasiswa], references: [id], onDelete: Cascade)
+
+  @@unique([idMahasiswa, jenisKesalahan])
+  @@index([idMahasiswa])
+  @@map("pola_error")
+}
+
+// Model Progress Belajar (Personalized Learning)
+model ProgressBelajar {
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  idMahasiswa          String    @map("id_mahasiswa") @db.ObjectId
+  topik                String
+  tingkatPenguasaan    Int       @default(0) @map("tingkat_penguasaan") // 0-100
+  jumlahErrorDiTopik   Int       @default(0) @map("jumlah_error_di_topik")
+  tanggalErrorTerakhir DateTime? @map("tanggal_error_terakhir")
+  trenPerbaikan        String?   @map("tren_perbaikan") // membaik, stagnan, menurun
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @updatedAt @map("updated_at")
+
+  // RELATION COMMENTED OUT - Cosmos DB compatibility
+  // mahasiswa            User      @relation(fields: [idMahasiswa], references: [id], onDelete: Cascade)
+
+  @@index([idMahasiswa])
+  @@map("progress_belajar")
+}
+
+// Model Metrik AI (untuk admin monitoring)
+model MetrikAI {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  idSubmisi         String?   @map("id_submisi") @db.ObjectId // Optional: link ke submisi
+  model             String    // Model yang digunakan (gpt-4o-mini, llama-3.1-70b, dll)
+  tokenInput        Int       @map("token_input")
+  tokenOutput       Int       @map("token_output")
+  totalToken        Int       @map("total_token")
+  biaya             Float     @default(0.0) // Dalam USD
+  waktuRespons      Float     @map("waktu_respons") // Dalam detik
+  statusBerhasil    Boolean   @map("status_berhasil") @default(true)
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@map("metrik_ai")
+}
+
+// Model Sumber Daya Pembelajaran (Learning Resources)
+model SumberDaya {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  judul             String
+  deskripsi         String?
+  tipe              String    // video, artikel, tutorial, exercise, quiz
+  url               String?   // Link eksternal
+  konten            String?   // Konten internal (untuk quiz/exercise)
+  topikTerkait      String[]  @map("topik_terkait") @default([])
+  tingkatKesulitan  String    @map("tingkat_kesulitan") @default("pemula") // pemula, menengah, mahir
+  durasi            Int?      // Durasi dalam menit (untuk video/tutorial)
+  dibuat            DateTime  @default(now())
+  diperbarui        DateTime  @updatedAt @map("diperbarui")
+
+  @@index([tipe])
+  @@map("sumber_daya")
+}
+
+// Model Topik Pembelajaran (untuk admin manage topik & difficulty)
+model TopikPembelajaran {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  nama              String    @unique
+  deskripsi         String?
+  kategori          String    // dasar, lanjutan, expert
+  tingkatKesulitan  String    @map("tingkat_kesulitan") @default("pemula") // pemula, menengah, mahir
+  prerequisite      String[]  @default([]) // Topik yang harus dikuasai dulu
+  tujuanPembelajaran String[] @map("tujuan_pembelajaran") @default([]) // Learning objectives
+  estimasiWaktu     Int?      @map("estimasi_waktu") // Dalam menit
+  totalError        Int       @default(0) @map("total_error") // Counter untuk tracking kesulitan
+  dibuat            DateTime  @default(now())
+  diperbarui        DateTime  @updatedAt @map("diperbarui")
+
+  @@map("topik_pembelajaran")
+}
+
+// Model untuk tracking API performance
+model MetrikAPI {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  endpoint          String    // Endpoint yang dipanggil
+  method            String    // GET, POST, dll
+  statusCode        Int       @map("status_code")
+  waktuRespons      Float     @map("waktu_respons") // Dalam milidetik
+  userAgent         String?   @map("user_agent")
+  ipAddress         String?   @map("ip_address")
+  errorMessage      String?   @map("error_message")
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  @@index([endpoint])
+  @@index([createdAt])
+  @@map("metrik_api")
+}
+
+// Model Exercise untuk practice exercises
+model Exercise {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  judul             String
+  deskripsi         String
+  topik             String    // Topik yang dilatih
+  tingkatKesulitan  String    @map("tingkat_kesulitan") @default("pemula") // pemula, menengah, mahir
+  instruksi         String    // Instruksi lengkap exercise
+  kodePemula        String?   @map("kode_pemula") // Starter code (optional)
+  solusiReferensi   String    @map("solusi_referensi") // Reference solution
+  testCases         String[]  @map("test_cases") @default([]) // Array of test case descriptions
+  poinBelajar       String[]  @map("poin_belajar") @default([]) // Learning points
+  estimasiWaktu     Int?      @map("estimasi_waktu") // Dalam menit
+  dibuat            DateTime  @default(now())
+  diperbarui        DateTime  @updatedAt @map("diperbarui")
+
+  // RELATION COMMENTED OUT - Cosmos DB compatibility
+  // submissions       ExerciseSubmission[]
+
+  @@index([topik])
+  @@map("exercises")
+}
+
+// Model untuk Exercise Submissions
+model ExerciseSubmission {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  idMahasiswa       String    @map("id_mahasiswa") @db.ObjectId
+  idExercise        String    @map("id_exercise") @db.ObjectId
+  kodeSubmisi       String    @map("kode_submisi")
+  statusSelesai     Boolean   @map("status_selesai") @default(false)
+  nilaiScore        Int?      @map("nilai_score") // 0-100
+  feedback          String?   // AI feedback
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  // RELATION COMMENTED OUT - Cosmos DB compatibility
+  // exercise          Exercise  @relation(fields: [idExercise], references: [id], onDelete: Cascade)
+
+  @@index([idMahasiswa])
+  @@index([idExercise])
+  @@map("exercise_submissions")
+}

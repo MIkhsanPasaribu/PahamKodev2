@@ -1,0 +1,51 @@
+# PahamKode - Requirements untuk Streamlit Fullstack Application
+# Python 3.11+
+
+# ===== CORE FRAMEWORK =====
+streamlit==1.31.1              # Fullstack web framework
+streamlit-ace==0.1.1           # Code editor dengan syntax highlighting
+
+# ===== DATABASE =====
+pymongo==4.6.1                 # Native MongoDB driver untuk Azure Cosmos DB
+dnspython==2.5.0               # DNS resolver untuk MongoDB connection strings
+
+# ===== AI & LangChain =====
+langchain==0.1.5               # AI orchestration framework
+langchain-openai==0.0.5        # OpenAI integration untuk LangChain
+langchain-community==0.0.20    # Community integrations
+
+# ===== AUTHENTICATION & SECURITY =====
+bcrypt==4.1.2                  # Password hashing
+python-jose[cryptography]==3.3.0  # JWT token handling
+passlib[bcrypt]==1.7.4         # Password hashing utilities
+
+# ===== UTILITIES =====
+python-dotenv==1.0.1           # Environment variable management
+pydantic==2.5.3                # Data validation dengan type hints
+pydantic-settings==2.1.0       # Settings management
+
+# ===== VISUALIZATION =====
+plotly==5.18.0                 # Interactive charts
+altair==5.2.0                  # Declarative visualization
+matplotlib==3.8.2              # Statistical plots
+pandas==2.2.0                  # Data manipulation untuk visualisasi
+
+# ===== HTTP CLIENT (untuk GitHub Models) =====
+httpx==0.26.0                  # Async HTTP client
+requests==2.31.0               # Sync HTTP client (fallback)
+
+# ===== TYPE CHECKING =====
+pyright==1.1.349               # Static type checker untuk Python
+
+# ===== DEVELOPMENT DEPENDENCIES (Optional) =====
+pytest==8.0.0                  # Testing framework
+pytest-asyncio==0.23.4         # Async support untuk pytest
+black==24.1.1                  # Code formatter
+flake8==7.0.0                  # Linter
+
+# ===== MONITORING & LOGGING =====
+loguru==0.7.2                  # Enhanced logging
+
+# ===== DATE/TIME =====
+python-dateutil==2.8.2         # Date utilities
+pytz==2024.1                   # Timezone support
