@@ -205,14 +205,24 @@ try:
                     st.markdown("#### ❌ Error Message")
                     st.code(submisi["pesan_error"][:300] + ("..." if len(submisi["pesan_error"]) > 300 else ""))
                 
-                # Full explanation toggle
-                with st.expander("📖 Lihat Penjelasan Lengkap"):
-                    st.markdown(submisi.get("penjelasan", "N/A"))
+                # Full explanation (NO nested expander - display directly)
+                st.markdown("#### 📖 Penjelasan Lengkap")
+                penjelasan = submisi.get("penjelasan", "N/A")
+                if len(penjelasan) > 500:
+                    st.markdown(penjelasan[:500] + "...")
+                    st.caption("ℹ️ Penjelasan dipotong untuk tampilan. Lihat detail lengkap di halaman Analisis.")
+                else:
+                    st.markdown(penjelasan)
                 
-                # Fix suggestion
+                # Fix suggestion (NO nested expander - display directly)
                 if submisi.get("saran_perbaikan"):
-                    with st.expander("💡 Lihat Saran Perbaikan"):
-                        st.code(submisi["saran_perbaikan"], language=bahasa)
+                    st.markdown("#### 💡 Saran Perbaikan")
+                    saran = submisi["saran_perbaikan"]
+                    if len(saran) > 400:
+                        st.code(saran[:400] + "...", language=bahasa)
+                        st.caption("ℹ️ Saran dipotong untuk tampilan.")
+                    else:
+                        st.code(saran, language=bahasa)
                 
                 # Related topics
                 if submisi.get("topik_terkait"):
@@ -232,7 +242,7 @@ st.markdown("---")
 col1, col2, col3 = st.columns([1, 8, 1])
 
 with col1:
-    if st.button("◀️ Sebelumnya", disabled=(st.session_state.history_page == 0)):
+    if st.button("◀️ Sebelumnya", disabled=(st.session_state.history_page == 0), key="riwayat_btn_prev"):
         st.session_state.history_page -= 1
         st.rerun()
 
@@ -240,6 +250,6 @@ with col2:
     st.markdown(f"<div style='text-align:center;padding:8px;'>Halaman {st.session_state.history_page + 1}</div>", unsafe_allow_html=True)
 
 with col3:
-    if st.button("Selanjutnya ▶️"):
+    if st.button("Selanjutnya ▶️", key="riwayat_btn_next"):
         st.session_state.history_page += 1
         st.rerun()

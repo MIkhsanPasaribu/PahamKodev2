@@ -78,8 +78,8 @@ try:
         Mulai dengan menganalisis error di halaman **Analisis**!
         """)
         
-        if st.button("🔍 Mulai Analisis Error", use_container_width=True):
-            st.switch_page("pages/mahasiswa/2_🔍_Analisis.py")
+        if st.button("🔍 Mulai Analisis Error", use_container_width=True, key="pola_btn_start"):
+            st.switch_page("pages/mahasiswa_2_🔍_Analisis.py")
         
         st.stop()
     
@@ -187,7 +187,7 @@ try:
                     key=f"resources_{i}",
                     use_container_width=True
                 ):
-                    st.switch_page("pages/mahasiswa/6_📚_Sumber_Belajar.py")
+                    st.switch_page("pages/mahasiswa_6_📚_Sumber_Belajar.py")
             
             st.markdown("---")
     
@@ -230,5 +230,5 @@ except Exception as e:
 
 st.markdown("---")
 
-if st.button("🔄 Refresh Data", use_container_width=True):
+if st.button("🔄 Refresh Data", use_container_width=True, key="pola_btn_refresh"):
     st.rerun()

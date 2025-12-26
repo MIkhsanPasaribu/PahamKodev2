@@ -273,5 +273,5 @@ except Exception as e:
 
 # ==================== REFRESH ====================
 
-if st.button("🔄 Refresh Data", use_container_width=True):
+if st.button("🔄 Refresh Data", use_container_width=True, key="sumber_btn_refresh"):
     st.rerun()

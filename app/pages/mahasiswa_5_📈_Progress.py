@@ -77,8 +77,8 @@ try:
         Mulai dengan menganalisis error di halaman **Analisis**!
         """)
         
-        if st.button("🔍 Mulai Analisis Error", use_container_width=True):
-            st.switch_page("pages/mahasiswa/2_🔍_Analisis.py")
+        if st.button("🔍 Mulai Analisis Error", use_container_width=True, key="progress_btn_start"):
+            st.switch_page("pages/mahasiswa_2_🔍_Analisis.py")
         
         st.stop()
     
@@ -256,11 +256,11 @@ try:
             
             with col_action1:
                 if st.button("📖 Lihat Resources", key=f"resources_{topik}", use_container_width=True):
-                    st.switch_page("pages/mahasiswa/6_📚_Sumber_Belajar.py")
+                    st.switch_page("pages/mahasiswa_6_📚_Sumber_Belajar.py")
             
             with col_action2:
                 if st.button("✏️ Latihan", key=f"exercise_{topik}", use_container_width=True):
-                    st.switch_page("pages/mahasiswa/7_✏️_Latihan.py")
+                    st.switch_page("pages/mahasiswa_7_✏️_Latihan.py")
             
             st.markdown("---")
     
@@ -307,5 +307,5 @@ except Exception as e:
 
 st.markdown("---")
 
-if st.button("🔄 Refresh Data", use_container_width=True):
+if st.button("🔄 Refresh Data", use_container_width=True, key="progress_btn_refresh"):
     st.rerun()

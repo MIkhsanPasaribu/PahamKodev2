@@ -164,7 +164,7 @@ with col1:
     )
 
 with col2:
-    if st.button("🗑️ Clear", use_container_width=True):
+    if st.button("🗑️ Clear", use_container_width=True, key="analisis_btn_clear"):
         st.session_state.analysis_result = None
         st.session_state.show_recommendations = False
         st.rerun()
@@ -324,8 +324,8 @@ if st.session_state.analysis_result:
         
         st.warning(hasil["pattern_alert"])
         
-        if st.button("📊 Lihat Pola Lengkap"):
-            st.switch_page("pages/mahasiswa/4_📊_Pola.py")
+        if st.button("📊 Lihat Pola Lengkap", key="analisis_btn_pola"):
+            st.switch_page("pages/mahasiswa_4_📊_Pola.py")
     
     
     # ==================== RECOMMENDED RESOURCES ====================
@@ -352,26 +352,38 @@ if st.session_state.analysis_result:
                         rekomendasi.update(hasil_topik)
             
             if rekomendasi:
-                # rekomendasi is a dict, so get first 5 values
-                rekomen_list = list(rekomendasi.values()) if isinstance(rekomendasi, dict) else []
-                for resource in rekomen_list[:5]:
-                    with st.container():
-                        col_info, col_action = st.columns([8, 2])
-                        
-                        with col_info:
-                            st.markdown(f"""
-                            **{resource.get('judul', 'N/A')}** | 
-                            <span style="background-color:#10b981;color:white;padding:2px 8px;border-radius:4px;font-size:12px;">{resource.get('tipe', 'N/A').upper()}</span>
-                            """, unsafe_allow_html=True)
-                            
-                            st.caption(resource.get("deskripsi", "")[:150] + "...")
-                        
-                        with col_action:
-                            url = resource.get("url", "#")
-                            if url and url != "#":
-                                st.link_button("🔗 Buka", url, use_container_width=True)
-                        
-                        st.markdown("---")
+                # rekomendasi is a dict with keys: video, artikel, tutorial, exercise, quiz
+                # Each value is a list of resources
+                all_resources = []
+                for resource_type, resources_list in rekomendasi.items():
+                    if isinstance(resources_list, list):
+                        all_resources.extend(resources_list)
+                
+                if all_resources:
+                    for resource in all_resources[:5]:
+                        if isinstance(resource, dict):
+                            with st.container():
+                                col_info, col_action = st.columns([8, 2])
+                                
+                                with col_info:
+                                    judul = resource.get('judul', 'N/A')
+                                    # tipe might not be in resource, fallback to resource_type
+                                    st.markdown(f"""
+                                    **{judul}**
+                                    """, unsafe_allow_html=True)
+                                    
+                                    deskripsi = resource.get("deskripsi", "")
+                                    if deskripsi:
+                                        st.caption(deskripsi[:150] + ("..." if len(deskripsi) > 150 else ""))
+                                
+                                with col_action:
+                                    url = resource.get("url", "#")
+                                    if url and url != "#":
+                                        st.link_button("🔗 Buka", url, use_container_width=True)
+                                
+                                st.markdown("---")
+                else:
+                    st.info("Tidak ada rekomendasi saat ini. Lihat halaman Sumber Belajar untuk resources lengkap.")
             else:
                 st.info("Tidak ada rekomendasi saat ini. Lihat halaman Sumber Belajar untuk resources lengkap.")
         

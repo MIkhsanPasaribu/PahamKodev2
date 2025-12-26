@@ -127,7 +127,7 @@ def _display_exercise_card(exercise: dict, id_mahasiswa: str) -> None:
             
             with col2:
                 if st.button("📖 Resources", key=f"resources_{exercise.get('_id')}", use_container_width=True):
-                    st.switch_page("pages/mahasiswa/6_📚_Sumber_Belajar.py")
+                    st.switch_page("pages/mahasiswa_6_📚_Sumber_Belajar.py")
         
         st.markdown("---")
 

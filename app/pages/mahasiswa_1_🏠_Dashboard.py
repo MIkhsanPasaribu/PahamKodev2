@@ -219,20 +219,20 @@ try:
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        if st.button("🔍 Analisis Error", use_container_width=True):
-            st.switch_page("pages/mahasiswa/2_🔍_Analisis.py")
+        if st.button("🔍 Analisis Error", use_container_width=True, key="dashboard_btn_analisis"):
+            st.switch_page("pages/mahasiswa_2_🔍_Analisis.py")
     
     with col2:
-        if st.button("📜 Lihat Riwayat", use_container_width=True):
-            st.switch_page("pages/mahasiswa/3_📜_Riwayat.py")
+        if st.button("📜 Lihat Riwayat", use_container_width=True, key="dashboard_btn_riwayat"):
+            st.switch_page("pages/mahasiswa_3_📜_Riwayat.py")
     
     with col3:
-        if st.button("📊 Lihat Pola", use_container_width=True):
-            st.switch_page("pages/mahasiswa/4_📊_Pola.py")
+        if st.button("📊 Lihat Pola", use_container_width=True, key="dashboard_btn_pola"):
+            st.switch_page("pages/mahasiswa_4_📊_Pola.py")
     
     with col4:
-        if st.button("📈 Lihat Progress", use_container_width=True):
-            st.switch_page("pages/mahasiswa/5_📈_Progress.py")
+        if st.button("📈 Lihat Progress", use_container_width=True, key="dashboard_btn_progress"):
+            st.switch_page("pages/mahasiswa_5_📈_Progress.py")
     
     st.markdown("---")
     
@@ -243,9 +243,13 @@ try:
     
     recommendations = stats.get("recommendations", [])
     
-    if recommendations:
+    if recommendations and isinstance(recommendations, list):
         for rec in recommendations[:3]:
-            st.info(rec)
+            # Handle both string and dict recommendations
+            if isinstance(rec, str):
+                st.info(rec)
+            elif isinstance(rec, dict):
+                st.info(rec.get("message", str(rec)))
     else:
         st.info("""
         **Mulai dengan Analisis Error!**
@@ -264,5 +268,5 @@ except Exception as e:
 
 st.markdown("---")
 
-if st.button("🔄 Refresh Data", use_container_width=True):
+if st.button("🔄 Refresh Data", use_container_width=True, key="dashboard_btn_refresh"):
     st.rerun()
