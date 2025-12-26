@@ -80,30 +80,35 @@ try:
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
+        total_submisi = stats.get("total_submisi", 0) or 0
+        submisi_minggu_ini = stats.get("submisi_minggu_ini", 0) or 0
         st.metric(
             "Total Submisi",
-            format_number(stats.get("total_submisi", 0)),
-            delta=f"+{stats.get('submisi_minggu_ini', 0)} minggu ini"
+            format_number(total_submisi, 0),
+            delta=f"+{submisi_minggu_ini} minggu ini"
         )
     
     with col2:
-        rata_penguasaan = stats.get("rata_rata_penguasaan", 0)
+        rata_penguasaan = stats.get("rata_rata_penguasaan", 0) or 0.0
+        penguasaan_delta = stats.get("penguasaan_delta", 0) or 0.0
         st.metric(
             "Rata-rata Penguasaan",
             f"{rata_penguasaan:.1f}%",
-            delta=f"{stats.get('penguasaan_delta', 0):+.1f}%"
+            delta=f"{penguasaan_delta:+.1f}%" if penguasaan_delta != 0 else None
         )
     
     with col3:
+        total_pola = stats.get("total_pola", 0) or 0
         st.metric(
             "Pola Error Terdeteksi",
-            format_number(stats.get("total_pola", 0))
+            format_number(total_pola, 0)
         )
     
     with col4:
+        topik_dipelajari = stats.get("topik_dipelajari", 0) or 0
         st.metric(
             "Topik Dipelajari",
-            format_number(stats.get("topik_dipelajari", 0))
+            format_number(topik_dipelajari, 0)
         )
     
     st.markdown("---")

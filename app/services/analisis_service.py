@@ -271,50 +271,121 @@ def hitung_statistik_mahasiswa(
     
     Returns:
         Dictionary dengan total_submisi, top_errors, avg_penguasaan, dll
+        Always returns complete structure dengan defaults untuk avoid None errors
     """
     try:
         # Total submisi
-        total_submisi = queries.hitung_total_submisi(id_mahasiswa)
+        total_submisi = queries.hitung_total_submisi(id_mahasiswa) or 0
+        
+        # Submisi minggu ini (last 7 days)
+        from datetime import timedelta
+        seminggu_lalu = datetime.now() - timedelta(days=7)
+        riwayat_semua = queries.ambil_riwayat_submisi(id_mahasiswa, limit=1000)
+        submisi_minggu_ini = len([r for r in riwayat_semua if r.get("created_at", datetime.min) >= seminggu_lalu]) or 0
         
         # Ambil pola error (top 5)
-        pola_errors = queries.ambil_pola_mahasiswa(id_mahasiswa)[:5]
+        pola_errors = queries.ambil_pola_mahasiswa(id_mahasiswa)[:5] or []
         
         # Progress learning
-        progress_data = queries.ambil_progress_mahasiswa(id_mahasiswa)
+        progress_data = queries.ambil_progress_mahasiswa(id_mahasiswa) or []
         
         # Rata-rata penguasaan
-        rata_rata_penguasaan = queries.hitung_rata_rata_penguasaan(id_mahasiswa)
+        rata_rata_penguasaan = queries.hitung_rata_rata_penguasaan(id_mahasiswa) or 0.0
         
-        # Recent activity (5 terakhir)
-        recent_activity = queries.ambil_riwayat_submisi(id_mahasiswa, limit=5)
+        # Recent activity (10 terakhir untuk dashboard)
+        recent_activity = queries.ambil_riwayat_submisi(id_mahasiswa, limit=10) or []
+        
+        # Top pola untuk display
+        top_pola = [
+            {
+                "jenis_kesalahan": p.get("jenis_kesalahan", "Unknown"),
+                "frekuensi": p.get("frekuensi", 0),
+                "deskripsi_miskonsepsi": p.get("deskripsi_miskonsepsi", "")
+            }
+            for p in pola_errors
+        ]
+        
+        # Progress per topik untuk chart
+        progress_per_topik = [
+            {
+                "topik": prog.get("topik", "Unknown"),
+                "tingkat_penguasaan": prog.get("tingkat_penguasaan", 0),
+                "jumlah_error_di_topik": prog.get("jumlah_error_di_topik", 0)
+            }
+            for prog in progress_data
+        ]
+        
+        # Weak topics (penguasaan < 50%)
+        weak_topics = [
+            {
+                "topik": prog.get("topik", "Unknown"),
+                "tingkat_penguasaan": prog.get("tingkat_penguasaan", 0),
+                "jumlah_error": prog.get("jumlah_error_di_topik", 0)
+            }
+            for prog in progress_data
+            if prog.get("tingkat_penguasaan", 0) < 50
+        ]
+        weak_topics = sorted(weak_topics, key=lambda x: x["tingkat_penguasaan"])
+        
+        # Recent activity formatted
+        recent_activity_formatted = [
+            {
+                "tipe_error": act.get("tipe_error", "Unknown Error"),
+                "bahasa": act.get("bahasa", "python"),
+                "kesenjangan_konsep": act.get("kesenjangan_konsep", ""),
+                "created_at": act.get("created_at", datetime.now())
+            }
+            for act in recent_activity
+        ]
+        
+        # Recommendations
+        recommendations = []
+        if total_submisi == 0:
+            recommendations.append(
+                "Mulai dengan menganalisis error pertama Anda di halaman Analisis Error!"
+            )
+        elif weak_topics:
+            recommendations.append(
+                f"Fokus pelajari topik: {', '.join([t['topik'] for t in weak_topics[:3]])}"
+            )
+        if len(top_pola) >= 2:
+            recommendations.append(
+                f"Perhatian: Anda sering mengalami error '{top_pola[0]['jenis_kesalahan']}'. Lihat halaman Pola Error."
+            )
+        
+        # Penguasaan delta (improvement) - simplified as 0 for now
+        penguasaan_delta = 0.0  # TODO: Calculate based on historical data
         
         return {
+            # Key metrics
             "total_submisi": total_submisi,
-            "pola_errors": [
-                {
-                    "jenis": p["jenis_kesalahan"],
-                    "frekuensi": p["frekuensi"]
-                }
-                for p in pola_errors
-            ],
-            "progress_topik": [
-                {
-                    "topik": prog.get("topik", "Unknown"),
-                    "penguasaan": prog.get("tingkat_penguasaan", 0),
-                    "jumlah_error": prog.get("jumlah_error_di_topik", 0)
-                }
-                for prog in progress_data
-            ],
+            "submisi_minggu_ini": submisi_minggu_ini,
             "rata_rata_penguasaan": rata_rata_penguasaan,
-            "recent_activity": [
-                {
-                    "tipe_error": act["tipe_error"],
-                    "created_at": act["created_at"]
-                }
-                for act in recent_activity
-            ]
+            "penguasaan_delta": penguasaan_delta,
+            "total_pola": len(pola_errors),
+            "topik_dipelajari": len(progress_data),
+            
+            # Detailed data
+            "top_pola": top_pola,
+            "progress_per_topik": progress_per_topik,
+            "weak_topics": weak_topics,
+            "recent_activity": recent_activity_formatted,
+            "recommendations": recommendations
         }
         
     except Exception as e:
-        logger.error(f"Error hitung statistik: {str(e)}")
-        return {}
+        logger.error(f"Error hitung statistik: {str(e)}", exc_info=True)
+        # Return safe defaults to avoid None errors
+        return {
+            "total_submisi": 0,
+            "submisi_minggu_ini": 0,
+            "rata_rata_penguasaan": 0.0,
+            "penguasaan_delta": 0.0,
+            "total_pola": 0,
+            "topik_dipelajari": 0,
+            "top_pola": [],
+            "progress_per_topik": [],
+            "weak_topics": [],
+            "recent_activity": [],
+            "recommendations": ["Terjadi kesalahan saat memuat data. Silakan refresh halaman."]
+        }
