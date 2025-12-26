@@ -15,6 +15,7 @@ from services.autentikasi_service import (
     login_pengguna,
     registrasi_pengguna
 )
+from .tim_developer import render_developer_info_footer
 
 logger = logging.getLogger(__name__)
 
@@ -118,6 +119,9 @@ def render_login_page():
         **Akun tersuspend?**
         - Hubungi administrator untuk informasi lebih lanjut
         """)
+    
+    # Developer info footer
+    render_developer_info_footer()
 
 
 # ==================== REGISTER PAGE ====================
@@ -231,6 +235,9 @@ def render_register_page():
     if st.button("🔐 Login Sekarang", use_container_width=True):
         st.session_state.page = "login"
         st.rerun()
+    
+    # Developer info footer
+    render_developer_info_footer()
 
 
 # ==================== LOGOUT FUNCTION ====================

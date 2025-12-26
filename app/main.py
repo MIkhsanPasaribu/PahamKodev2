@@ -128,19 +128,6 @@ def tampilkan_landing_page():
         - Practice exercises sesuai kebutuhan
         """)
     
-    st.markdown("""
-    ---
-    
-    ### 💡 Teknologi
-    
-    - **AI**: GitHub Models (GPT-4o-mini) - GRATIS! 🎉
-    - **Framework**: Streamlit (Python Fullstack)
-    - **Database**: Azure Cosmos DB (MongoDB API)
-    - **Analytics**: Real-time pattern detection & progress tracking
-    
-    ---
-    """)
-    
     # Call to Action
     st.markdown("### 🚀 Mulai Sekarang!")
     
@@ -163,7 +150,7 @@ def tampilkan_landing_page():
     <div style='text-align: center; color: gray;'>
     <small>
     PahamKode v1.0.0 | Memahami error dari perspektif konseptual 🧠<br>
-    © 2024 - Built with ❤️ using Streamlit & GitHub Models
+    © 2024 - Built by M. Ikhsan Pasaribu
     </small>
     </div>
     """, unsafe_allow_html=True)
