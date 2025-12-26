@@ -1,0 +1,48 @@
+# Streamlit Configuration untuk Production
+# Dokumentasi: https://docs.streamlit.io/library/advanced-features/configuration
+
+[server]
+# Port untuk Streamlit server
+port = 8501
+
+# Address untuk binding (0.0.0.0 = accept dari semua IP)
+address = "0.0.0.0"
+
+# Headless mode (tanpa browser auto-open)
+headless = true
+
+# Enable CORS untuk production
+enableCORS = false
+
+# Enable XSRF protection
+enableXsrfProtection = true
+
+# Max upload size (200MB untuk code submissions)
+maxUploadSize = 200
+
+[browser]
+# Jangan auto-open browser di server
+gatherUsageStats = false
+
+[theme]
+# Theme configuration (optional)
+primaryColor = "#FF4B4B"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#262730"
+font = "sans serif"
+
+[client]
+# Reconnect behavior
+showErrorDetails = false
+toolbarMode = "minimal"
+
+[runner]
+# Magic commands
+magicEnabled = true
+
+# Fast rerun (untuk development)
+fastReruns = true
+
+# Max message size (MB)
+maxMessageSize = 200
