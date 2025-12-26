@@ -250,7 +250,7 @@ def render_developer_card(developer_info: Dict[str, Any], compact: bool = False)
         <p><small>
         Dibuat dengan ❤️ oleh M. Ikhsan Pasaribu
         <br/>
-        Pendidikan Teknik Informatika - Universitas
+        Pendidikan Teknik Informatika - Universitas Negeri Padang
         </small></p>
         </div>
         """, unsafe_allow_html=True)
