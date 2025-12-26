@@ -1,0 +1,958 @@
+{
+    "version": "1.1.407",
+    "time": "1766725580925",
+    "generalDiagnostics": [
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\components\\__init__.py",
+            "severity": "error",
+            "message": "Import \".visualisasi\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 7,
+                    "character": 5
+                },
+                "end": {
+                    "line": 7,
+                    "character": 17
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\components\\autentikasi.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\components\\autentikasi.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 87,
+                    "character": 33
+                },
+                "end": {
+                    "line": 87,
+                    "character": 36
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\components\\sidebar.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\config.py",
+            "severity": "error",
+            "message": "Arguments missing for parameters \"DATABASE_URL\", \"JWT_SECRET_KEY\"",
+            "range": {
+                "start": {
+                    "line": 49,
+                    "character": 11
+                },
+                "end": {
+                    "line": 49,
+                    "character": 21
+                }
+            },
+            "rule": "reportCallIssue"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\database\\koneksi.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 8,
+                    "character": 7
+                },
+                "end": {
+                    "line": 8,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\main.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 7,
+                    "character": 7
+                },
+                "end": {
+                    "line": 7,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 8,
+                    "character": 7
+                },
+                "end": {
+                    "line": 8,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "Import \"plotly.graph_objects\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 27
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 87,
+                    "character": 34
+                },
+                "end": {
+                    "line": 87,
+                    "character": 37
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 94,
+                    "character": 34
+                },
+                "end": {
+                    "line": 94,
+                    "character": 37
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 99,
+                    "character": 23
+                },
+                "end": {
+                    "line": 99,
+                    "character": 26
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 123,
+                    "character": 20
+                },
+                "end": {
+                    "line": 123,
+                    "character": 23
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 152,
+                    "character": 23
+                },
+                "end": {
+                    "line": 152,
+                    "character": 26
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 186,
+                    "character": 32
+                },
+                "end": {
+                    "line": 186,
+                    "character": 35
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 210,
+                    "character": 20
+                },
+                "end": {
+                    "line": 210,
+                    "character": 23
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 237,
+                    "character": 20
+                },
+                "end": {
+                    "line": 237,
+                    "character": 23
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 267,
+                    "character": 21
+                },
+                "end": {
+                    "line": 267,
+                    "character": 24
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\1_≡ƒôè_Dashboard_Admin.py",
+            "severity": "error",
+            "message": "\"get\" is not a known attribute of \"None\"",
+            "range": {
+                "start": {
+                    "line": 278,
+                    "character": 22
+                },
+                "end": {
+                    "line": 278,
+                    "character": 25
+                }
+            },
+            "rule": "reportOptionalMemberAccess"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\2_≡ƒæÑ_Kelola_Pengguna.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\2_≡ƒæÑ_Kelola_Pengguna.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 7
+                },
+                "end": {
+                    "line": 12,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\3_≡ƒôê_Analitik_Global.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 7
+                },
+                "end": {
+                    "line": 12,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\3_≡ƒôê_Analitik_Global.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 13,
+                    "character": 7
+                },
+                "end": {
+                    "line": 13,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\3_≡ƒôê_Analitik_Global.py",
+            "severity": "error",
+            "message": "Import \"plotly.graph_objects\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 14,
+                    "character": 7
+                },
+                "end": {
+                    "line": 14,
+                    "character": 27
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\3_≡ƒôê_Analitik_Global.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 16,
+                    "character": 7
+                },
+                "end": {
+                    "line": 16,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\4_≡ƒöì_Pola_Global.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\4_≡ƒöì_Pola_Global.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\4_≡ƒöì_Pola_Global.py",
+            "severity": "error",
+            "message": "Import \"plotly.graph_objects\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 7
+                },
+                "end": {
+                    "line": 12,
+                    "character": 27
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\4_≡ƒöì_Pola_Global.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 14,
+                    "character": 7
+                },
+                "end": {
+                    "line": 14,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\5_≡ƒôÜ_Kelola_Konten.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\6_ΓÜÖ∩╕Å_Monitoring_Sistem.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\6_ΓÜÖ∩╕Å_Monitoring_Sistem.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 7
+                },
+                "end": {
+                    "line": 12,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\6_ΓÜÖ∩╕Å_Monitoring_Sistem.py",
+            "severity": "error",
+            "message": "Import \"plotly.graph_objects\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 13,
+                    "character": 7
+                },
+                "end": {
+                    "line": 13,
+                    "character": 27
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\admin\\6_ΓÜÖ∩╕Å_Monitoring_Sistem.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 220,
+                    "character": 15
+                },
+                "end": {
+                    "line": 220,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\1_≡ƒÅá_Dashboard.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\1_≡ƒÅá_Dashboard.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\1_≡ƒÅá_Dashboard.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 118,
+                    "character": 15
+                },
+                "end": {
+                    "line": 118,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\2_≡ƒöì_Analisis.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\2_≡ƒöì_Analisis.py",
+            "severity": "error",
+            "message": "Import \"streamlit_ace\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 5
+                },
+                "end": {
+                    "line": 11,
+                    "character": 18
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\2_≡ƒöì_Analisis.py",
+            "severity": "error",
+            "message": "Argument of type \"Any | Unknown | list[Any]\" cannot be assigned to parameter \"topik\" of type \"str\" in function \"ambil_rekomendasi_belajar\"\n┬á┬áType \"Any | Unknown | list[Any]\" is not assignable to type \"str\"\n┬á┬á┬á┬á\"list[Any]\" is not assignable to \"str\"",
+            "range": {
+                "start": {
+                    "line": 338,
+                    "character": 16
+                },
+                "end": {
+                    "line": 338,
+                    "character": 58
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\2_≡ƒöì_Analisis.py",
+            "severity": "error",
+            "message": "Argument of type \"slice[None, Literal[5], None]\" cannot be assigned to parameter \"key\" of type \"str\" in function \"__getitem__\"\n┬á┬á\"slice[None, Literal[5], None]\" is not assignable to \"str\"",
+            "range": {
+                "start": {
+                    "line": 342,
+                    "character": 32
+                },
+                "end": {
+                    "line": 342,
+                    "character": 47
+                }
+            },
+            "rule": "reportArgumentType"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\3_≡ƒô£_Riwayat.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\3_≡ƒô£_Riwayat.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\4_≡ƒôè_Pola.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\4_≡ƒôè_Pola.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\4_≡ƒôè_Pola.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 7
+                },
+                "end": {
+                    "line": 12,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\5_≡ƒôê_Progress.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\5_≡ƒôê_Progress.py",
+            "severity": "error",
+            "message": "Import \"plotly.express\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\5_≡ƒôê_Progress.py",
+            "severity": "error",
+            "message": "Import \"plotly.graph_objects\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 11,
+                    "character": 7
+                },
+                "end": {
+                    "line": 11,
+                    "character": 27
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\5_≡ƒôê_Progress.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 13,
+                    "character": 7
+                },
+                "end": {
+                    "line": 13,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\6_≡ƒôÜ_Sumber_Belajar.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\7_Γ£Å∩╕Å_Latihan.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\8_≡ƒôä_Export.py",
+            "severity": "error",
+            "message": "Import \"streamlit\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 7
+                },
+                "end": {
+                    "line": 9,
+                    "character": 16
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\pages\\mahasiswa\\8_≡ƒôä_Export.py",
+            "severity": "error",
+            "message": "Import \"pandas\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 10,
+                    "character": 7
+                },
+                "end": {
+                    "line": 10,
+                    "character": 13
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\services\\ai_service.py",
+            "severity": "error",
+            "message": "Import \"langchain_openai\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 12,
+                    "character": 5
+                },
+                "end": {
+                    "line": 12,
+                    "character": 21
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\services\\ai_service.py",
+            "severity": "error",
+            "message": "Import \"langchain.prompts\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 13,
+                    "character": 5
+                },
+                "end": {
+                    "line": 13,
+                    "character": 22
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\services\\ai_service.py",
+            "severity": "error",
+            "message": "Import \"langchain.output_parsers\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 14,
+                    "character": 5
+                },
+                "end": {
+                    "line": 14,
+                    "character": 29
+                }
+            },
+            "rule": "reportMissingImports"
+        },
+        {
+            "file": "c:\\Users\\mikhs\\OneDrive\\Documents\\PahamKodev2\\app\\utils\\prompts.py",
+            "severity": "error",
+            "message": "Import \"langchain.prompts\" could not be resolved",
+            "range": {
+                "start": {
+                    "line": 9,
+                    "character": 5
+                },
+                "end": {
+                    "line": 9,
+                    "character": 22
+                }
+            },
+            "rule": "reportMissingImports"
+        }
+    ],
+    "summary": {
+        "filesAnalyzed": 31,
+        "errorCount": 59,
+        "warningCount": 0,
+        "informationCount": 0,
+        "timeInSec": 2.567
+    }
+}
+
