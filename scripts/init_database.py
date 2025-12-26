@@ -170,9 +170,9 @@ print("\n🌱 Seeding initial data...")
 # 1. Create admin user (jika belum ada)
 import bcrypt
 
-admin_email = "admin@pahamkode.com"
+admin_email = "mikhsanpasaribu@gmail.com"
 if db.users.count_documents({"email": admin_email}) == 0:
-    admin_password = "admin123"  # GANTI dengan password kuat!
+    admin_password = "Ikhsan23076039"  # GANTI dengan password kuat!
     password_hash = bcrypt.hashpw(admin_password.encode('utf-8'), bcrypt.gensalt())
     
     admin_user = {
