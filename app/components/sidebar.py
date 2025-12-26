@@ -76,27 +76,27 @@ def render_admin_navigation():
     
     # Dashboard
     if st.button("📊 Dashboard", use_container_width=True):
-        st.switch_page("pages/admin_1_📊_Dashboard.py")
+        st.switch_page("admin_1_📊_Dashboard.py")
     
     # User Management
     if st.button("👥 Kelola Pengguna", use_container_width=True):
-        st.switch_page("pages/admin_2_👥_Kelola_Pengguna.py")
+        st.switch_page("admin_2_👥_Kelola_Pengguna.py")
     
     # Analytics
     if st.button("📈 Analitik Global", use_container_width=True):
-        st.switch_page("pages/admin_3_📈_Analitik_Global.py")
+        st.switch_page("admin_3_📈_Analitik_Global.py")
     
     # Patterns
     if st.button("🔍 Pola Global", use_container_width=True):
-        st.switch_page("pages/admin_4_🔍_Pola_Global.py")
+        st.switch_page("admin_4_🔍_Pola_Global.py")
     
     # Content Management
     if st.button("📚 Kelola Konten", use_container_width=True):
-        st.switch_page("pages/admin_5_📚_Kelola_Konten.py")
+        st.switch_page("admin_5_📚_Kelola_Konten.py")
     
     # System Monitoring
     if st.button("⚙️ Monitoring Sistem", use_container_width=True):
-        st.switch_page("pages/admin_6_⚙️_Monitoring_Sistem.py")
+        st.switch_page("admin_6_⚙️_Monitoring_Sistem.py")
 
 
 # ==================== MAHASISWA NAVIGATION ====================
@@ -108,39 +108,39 @@ def render_mahasiswa_navigation():
     
     # Dashboard
     if st.button("🏠 Dashboard", use_container_width=True):
-        st.switch_page("pages/mahasiswa_1_🏠_Dashboard.py")
+        st.switch_page("mahasiswa_1_🏠_Dashboard.py")
     
     # Analisis Error
     if st.button("🔍 Analisis Error", use_container_width=True):
-        st.switch_page("pages/mahasiswa_2_🔍_Analisis.py")
+        st.switch_page("mahasiswa_2_🔍_Analisis.py")
     
     # Riwayat
     if st.button("📜 Riwayat", use_container_width=True):
-        st.switch_page("pages/mahasiswa_3_📜_Riwayat.py")
+        st.switch_page("mahasiswa_3_📜_Riwayat.py")
     
     # Pola Error
     if st.button("📊 Pola Error", use_container_width=True):
-        st.switch_page("pages/mahasiswa_4_📊_Pola.py")
+        st.switch_page("mahasiswa_4_📊_Pola.py")
     
     # Progress
     if st.button("📈 Progress Belajar", use_container_width=True):
-        st.switch_page("pages/mahasiswa_5_📈_Progress.py")
+        st.switch_page("mahasiswa_5_📈_Progress.py")
     
     # Sumber Belajar
     if st.button("📚 Sumber Belajar", use_container_width=True):
-        st.switch_page("pages/mahasiswa_6_📚_Sumber_Belajar.py")
+        st.switch_page("mahasiswa_6_📚_Sumber_Belajar.py")
     
     # Latihan
     if st.button("✏️ Latihan", use_container_width=True):
-        st.switch_page("pages/mahasiswa_7_✏️_Latihan.py")
+        st.switch_page("mahasiswa_7_✏️_Latihan.py")
     
-    # Export
+    # Export (tanpa prefix 'pages/' - Streamlit sudah mencari di app/pages/)
     if st.button("📄 Export", use_container_width=True):
-        st.switch_page("pages/mahasiswa_8_📄_Export.py")
+        st.switch_page("mahasiswa_8_📄_Export.py")
     
     # Tentang Tim
     if st.button("👥 Tentang Tim", use_container_width=True):
-        st.switch_page("pages/mahasiswa_9_👥_Tentang_Tim.py")
+        st.switch_page("mahasiswa_9_👥_Tentang_Tim.py")
 
 
 # ==================== HELPER FUNCTIONS ====================

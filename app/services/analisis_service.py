@@ -299,9 +299,9 @@ def hitung_statistik_mahasiswa(
             ],
             "progress_topik": [
                 {
-                    "topik": prog["topik"],
-                    "penguasaan": prog["tingkat_penguasaan"],
-                    "jumlah_error": prog["jumlah_error_di_topik"]
+                    "topik": prog.get("topik", "Unknown"),
+                    "penguasaan": prog.get("tingkat_penguasaan", 0),
+                    "jumlah_error": prog.get("jumlah_error_di_topik", 0)
                 }
                 for prog in progress_data
             ],

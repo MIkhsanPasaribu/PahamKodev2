@@ -181,10 +181,9 @@ try:
         st.dataframe(
             df_errors,
             column_config={
-                "error_type": st.column_config.TextColumn("Tipe Error", width="large"),
-                "total_count": st.column_config.NumberColumn("Total", format="%d"),
-                "unique_mahasiswa": st.column_config.NumberColumn("Mahasiswa Terdampak", format="%d"),
-                "avg_per_mahasiswa": st.column_config.NumberColumn("Rata-rata per Mahasiswa", format="%.1f")
+                "tipe_error": st.column_config.TextColumn("Tipe Error", width="large"),
+                "jumlah": st.column_config.NumberColumn("Total", format="%d"),
+                "jumlah_mahasiswa": st.column_config.NumberColumn("Mahasiswa Terdampak", format="%d")
             },
             hide_index=True,
             use_container_width=True
@@ -193,12 +192,12 @@ try:
         # Bar chart - Top 10
         fig_errors = px.bar(
             df_errors,
-            x="total_count",
-            y="error_type",
+            x="jumlah",
+            y="tipe_error",
             orientation="h",
             title="Top 10 Error Types",
-            labels={"total_count": "Jumlah", "error_type": "Tipe Error"},
-            color="total_count",
+            labels={"jumlah": "Jumlah", "tipe_error": "Tipe Error"},
+            color="jumlah",
             color_continuous_scale="Reds"
         )
         
@@ -211,25 +210,22 @@ try:
         
         selected_error = st.selectbox(
             "Pilih error type untuk detail",
-            options=[e["error_type"] for e in top_errors],
+            options=[e["tipe_error"] for e in top_errors],
             key="selected_error_drilldown"
         )
         
         if selected_error:
             # Find selected error data
-            error_data = next((e for e in top_errors if e["error_type"] == selected_error), None)
+            error_data = next((e for e in top_errors if e["tipe_error"] == selected_error), None)
             
             if error_data:
-                col1, col2, col3 = st.columns(3)
+                col1, col2 = st.columns(2)
                 
                 with col1:
-                    st.metric("Total Occurrence", format_number(error_data.get("total_count", 0)))
+                    st.metric("Total Occurrence", format_number(error_data.get("jumlah", 0)))
                 
                 with col2:
-                    st.metric("Mahasiswa Terdampak", format_number(error_data.get("unique_mahasiswa", 0)))
-                
-                with col3:
-                    st.metric("Rata-rata per Mahasiswa", f"{error_data.get('avg_per_mahasiswa', 0):.1f}")
+                    st.metric("Mahasiswa Terdampak", format_number(error_data.get("jumlah_mahasiswa", 0)))
                 
                 # Most common conceptual gaps
                 if error_data.get("common_gaps"):
