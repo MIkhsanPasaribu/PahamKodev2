@@ -11,10 +11,15 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.autentikasi_service import is_mahasiswa
-from app.utils.helpers import format_datetime, format_relative_time, get_severity_color
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.autentikasi_service import is_mahasiswa
+from utils.helpers import format_datetime, format_relative_time, get_severity_color
 
 logger = logging.getLogger(__name__)
 
@@ -117,15 +122,19 @@ if "history_page" not in st.session_state:
 # ==================== FETCH HISTORY ====================
 
 try:
+    # Ensure types are safe
+    periode: str = date_range if isinstance(date_range, str) else "semua"
+    items_per_page: int = per_page if isinstance(per_page, int) else 10
+    
     # Calculate date filter
     start_date = None
-    if date_range != "semua":
-        days = {"7_hari": 7, "30_hari": 30, "90_hari": 90}[date_range]
+    if periode != "semua":
+        days = {"7_hari": 7, "30_hari": 30, "90_hari": 90}.get(periode, 30)
         start_date = datetime.now() - timedelta(days=days)
     
     # Fetch from database
-    skip = st.session_state.history_page * per_page
-    riwayat = queries.ambil_riwayat_submisi(id_mahasiswa, limit=per_page, skip=skip)
+    skip = st.session_state.history_page * items_per_page
+    riwayat = queries.ambil_riwayat_submisi(id_mahasiswa, limit=items_per_page, skip=skip)
     
     # Apply filters
     filtered_riwayat = riwayat

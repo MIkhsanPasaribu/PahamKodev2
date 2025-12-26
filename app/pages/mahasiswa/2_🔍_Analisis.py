@@ -12,11 +12,16 @@ import streamlit as st
 from streamlit_ace import st_ace
 from datetime import datetime
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.analisis_service import proses_analisis_error, ambil_rekomendasi_belajar
-from app.services.autentikasi_service import is_mahasiswa
-from app.utils.helpers import capitalize_first
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.analisis_service import proses_analisis_error, ambil_rekomendasi_belajar
+from services.autentikasi_service import is_mahasiswa
+from utils.helpers import capitalize_first
 
 logger = logging.getLogger(__name__)
 
@@ -89,6 +94,9 @@ with col2:
         key="bahasa_pemrograman"
     )
     
+    # Ensure bahasa is str type
+    bahasa_terpilih: str = bahasa if isinstance(bahasa, str) else "python"
+    
     # Language mode mapping for ace editor
     ace_mode = {
         "python": "python",
@@ -96,7 +104,7 @@ with col2:
         "java": "java",
         "cpp": "c_cpp",
         "csharp": "csharp"
-    }.get(bahasa, "python")
+    }.get(bahasa_terpilih, "python")
     
     st.markdown("---")
     
@@ -176,7 +184,7 @@ if analyze_button:
                     id_mahasiswa=id_mahasiswa,
                     kode=kode,
                     pesan_error=pesan_error,
-                    bahasa=bahasa
+                    bahasa=bahasa_terpilih
                 )
                 
                 # Check if analysis successful
@@ -328,14 +336,25 @@ if st.session_state.analysis_result:
         
         try:
             # Get recommended resources based on weak topics
-            rekomendasi = ambil_rekomendasi_belajar(
-                queries,
-                id_mahasiswa,
-                topik_terkait[:3] if topik_terkait else []
-            )
+            # Function expects string topic, so we need to pass individual topics or handle list
+            topik_untuk_rekomendasi: list[str] = topik_terkait[:3] if isinstance(topik_terkait, list) and topik_terkait else []
+            
+            rekomendasi = {}
+            # Combine recommendations from all topics
+            for topik in topik_untuk_rekomendasi:
+                if isinstance(topik, str):
+                    hasil_topik = ambil_rekomendasi_belajar(
+                        queries,
+                        id_mahasiswa,
+                        topik
+                    )
+                    if hasil_topik:
+                        rekomendasi.update(hasil_topik)
             
             if rekomendasi:
-                for resource in rekomendasi[:5]:
+                # rekomendasi is a dict, so get first 5 values
+                rekomen_list = list(rekomendasi.values()) if isinstance(rekomendasi, dict) else []
+                for resource in rekomen_list[:5]:
                     with st.container():
                         col_info, col_action = st.columns([8, 2])
                         

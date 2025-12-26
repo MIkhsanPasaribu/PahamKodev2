@@ -13,9 +13,14 @@ import streamlit as st
 from datetime import datetime
 import logging
 from typing import Optional
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.admin_service import (
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.admin_service import (
     ambil_semua_sumber_daya,
     tambah_sumber_daya,
     update_sumber_daya,
@@ -29,8 +34,8 @@ from app.services.admin_service import (
     update_exercise,
     hapus_exercise
 )
-from app.services.autentikasi_service import require_admin
-from app.utils.helpers import format_datetime, format_number
+from services.autentikasi_service import require_admin
+from utils.helpers import format_datetime, format_number
 
 logger = logging.getLogger(__name__)
 

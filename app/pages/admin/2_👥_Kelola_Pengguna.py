@@ -14,16 +14,21 @@ import pandas as pd
 from datetime import datetime
 import logging
 from typing import List, Dict, Any
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.admin_service import (
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.admin_service import (
     ambil_daftar_mahasiswa, 
     suspend_mahasiswa,
     aktifkan_mahasiswa,
     ambil_detail_mahasiswa
 )
-from app.services.autentikasi_service import require_admin
-from app.utils.helpers import (
+from services.autentikasi_service import require_admin
+from utils.helpers import (
     format_datetime,
     format_relative_time,
     format_number,
@@ -131,19 +136,22 @@ try:
     tingkat_filter = None if filter_tingkat == "Semua" else filter_tingkat
     search = search_query if search_query.strip() else None
     
+    # Ensure per_page is int
+    items_per_page: int = per_page if isinstance(per_page, int) else 50
+    
     # Fetch mahasiswa list
     mahasiswa_list, total_count = ambil_daftar_mahasiswa(
         queries,
         page=st.session_state.current_page,
-        per_page=per_page,
+        per_page=items_per_page,
         filter_status=status_filter,
         filter_tingkat=tingkat_filter,
         search_query=search
     )
     
     # Calculate pagination info
-    total_pages = (total_count + per_page - 1) // per_page
-    start_idx = st.session_state.current_page * per_page + 1
+    total_pages = (total_count + items_per_page - 1) // items_per_page
+    start_idx = st.session_state.current_page * items_per_page + 1
     end_idx = min(start_idx + len(mahasiswa_list) - 1, total_count)
     
     # Display count
@@ -318,16 +326,12 @@ except Exception as e:
 # ==================== DETAIL MODAL ====================
 
 if st.session_state.show_detail_modal and st.session_state.detail_mahasiswa_id:
-    
-    @st.dialog("📊 Detail Mahasiswa", width="large")
-    def show_detail_dialog():
-        try:
-            detail = ambil_detail_mahasiswa(queries, st.session_state.detail_mahasiswa_id)
-            
-            if not detail:
-                st.error("Mahasiswa tidak ditemukan!")
-                return
-            
+    try:
+        detail = ambil_detail_mahasiswa(queries, st.session_state.detail_mahasiswa_id)
+        
+        if not detail:
+            st.error("Mahasiswa tidak ditemukan!")
+        else:
             # Info Umum
             st.markdown("### 👤 Informasi Umum")
             col1, col2 = st.columns(2)
@@ -383,12 +387,10 @@ if st.session_state.show_detail_modal and st.session_state.detail_mahasiswa_id:
                 st.session_state.show_detail_modal = False
                 st.session_state.detail_mahasiswa_id = None
                 st.rerun()
-        
-        except Exception as e:
-            logger.error(f"Error showing detail: {e}")
-            st.error(f"❌ Error: {str(e)}")
     
-    show_detail_dialog()
+    except Exception as e:
+        logger.error(f"Error showing detail: {e}")
+        st.error(f"❌ Error: {str(e)}")
 
 
 # ==================== REFRESH BUTTON ====================

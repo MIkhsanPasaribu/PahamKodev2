@@ -12,11 +12,16 @@ import streamlit as st
 import plotly.express as px
 from datetime import datetime
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.analisis_service import hitung_statistik_mahasiswa
-from app.services.autentikasi_service import is_mahasiswa
-from app.utils.helpers import format_number, format_percentage, format_relative_time
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.analisis_service import hitung_statistik_mahasiswa
+from services.autentikasi_service import is_mahasiswa
+from utils.helpers import format_number, format_percentage, format_relative_time
 
 logger = logging.getLogger(__name__)
 

@@ -12,10 +12,16 @@ import pandas as pd
 import logging
 from datetime import datetime, timedelta
 from io import BytesIO
+from typing import Any
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.autentikasi_service import is_mahasiswa
-from app.utils.helpers import format_datetime, format_percentage, format_number
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.autentikasi_service import is_mahasiswa
+from utils.helpers import format_datetime, format_percentage, format_number
 
 logger = logging.getLogger(__name__)
 
@@ -135,8 +141,20 @@ try:
         date_from = datetime.now() - timedelta(days=90)
         date_to = datetime.now()
     elif periode_option == "Custom" and tanggal_mulai and tanggal_akhir:
-        date_from = datetime.combine(tanggal_mulai, datetime.min.time())
-        date_to = datetime.combine(tanggal_akhir, datetime.max.time())
+        # st.date_input can return date, Tuple[date], or Tuple[date, date]
+        # Extract first date if tuple
+        if isinstance(tanggal_mulai, tuple):
+            date_start = tanggal_mulai[0] if tanggal_mulai else datetime.now().date()
+        else:
+            date_start = tanggal_mulai
+        
+        if isinstance(tanggal_akhir, tuple):
+            date_end = tanggal_akhir[0] if tanggal_akhir else datetime.now().date()
+        else:
+            date_end = tanggal_akhir
+        
+        date_from = datetime.combine(date_start, datetime.min.time())
+        date_to = datetime.combine(date_end, datetime.max.time())
     
     # Fetch data
     riwayat = queries.ambil_riwayat_submisi(id_mahasiswa, limit=1000)
@@ -280,8 +298,8 @@ if st.button("📥 Generate Report", type="primary", use_container_width=True):
                 }
                 
                 # Create Excel file with multiple sheets
-                output = BytesIO()
-                with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                output: Any = BytesIO()  # Type: IO[bytes]
+                with pd.ExcelWriter(output, engine='xlsxwriter') as writer:  # type: ignore
                     # Info sheet
                     df_info = pd.DataFrame([report_data["Info Mahasiswa"]]).T
                     df_info.columns = ["Value"]

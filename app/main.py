@@ -12,9 +12,9 @@ import streamlit as st
 import logging
 from datetime import datetime
 
-from app.config import settings
-from app.database.koneksi import dapatkan_database
-from app.database.queries import DatabaseQueries
+from config import settings
+from database.koneksi import dapatkan_database
+from database.queries import DatabaseQueries
 
 # Setup logging
 logging.basicConfig(
@@ -32,8 +32,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        'Get Help': 'https://github.com/yourusername/pahamkode',
-        'Report a bug': 'https://github.com/yourusername/pahamkode/issues',
+        'Get Help': 'https://github.com/MIkhsanPasaribu/PahamKodev2',
+        'Report a bug': 'https://github.com/MIkhsanPasaribu/PahamKodev2/issues',
         'About': '''
         # PahamKode
         
@@ -218,17 +218,17 @@ def main():
             tampilkan_landing_page()
         elif st.session_state.page == "login":
             # Import here to avoid circular import
-            from app.components.autentikasi import render_login_page
+            from components.autentikasi import render_login_page
             render_login_page()
         elif st.session_state.page == "register":
-            from app.components.autentikasi import render_register_page
+            from components.autentikasi import render_register_page
             render_register_page()
     else:
         # Authenticated - route based on role
         role = pengguna.get("role", "mahasiswa")
         
         # Show sidebar with navigation
-        from app.components.sidebar import render_sidebar
+        from components.sidebar import render_sidebar
         render_sidebar()
         
         # Show appropriate dashboard based on role

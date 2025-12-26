@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from pymongo.database import Database
 from typing import Optional
 import streamlit as st
-from app.config import settings
+from config import settings
 
 
 @st.cache_resource

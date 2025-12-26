@@ -14,11 +14,16 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.admin_service import ambil_system_health
-from app.services.autentikasi_service import require_admin
-from app.utils.helpers import format_number, format_percentage
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.admin_service import ambil_system_health
+from services.autentikasi_service import require_admin
+from utils.helpers import format_number, format_percentage
 
 logger = logging.getLogger(__name__)
 

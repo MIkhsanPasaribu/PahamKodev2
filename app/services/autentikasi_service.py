@@ -12,8 +12,8 @@ import bcrypt
 from typing import Optional, Dict, Any, Tuple
 from datetime import datetime
 
-from app.database.queries import DatabaseQueries
-from app.database.models import Pengguna
+from database.queries import DatabaseQueries
+from database.models import Pengguna
 
 logger = logging.getLogger(__name__)
 

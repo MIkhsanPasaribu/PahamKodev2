@@ -15,7 +15,7 @@ from bson import ObjectId
 from datetime import datetime, timedelta
 import logging
 
-from app.database.models import (
+from database.models import (
     Pengguna, SubmisiError, PolaError, ProgressBelajar,
     MetrikAI, SumberDaya, TopikPembelajaran, Exercise, MetrikAPI
 )

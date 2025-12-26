@@ -11,7 +11,7 @@ import streamlit as st
 import logging
 from datetime import datetime
 
-from app.services.autentikasi_service import (
+from services.autentikasi_service import (
     login_pengguna,
     registrasi_pengguna
 )
@@ -85,8 +85,9 @@ def render_login_page():
                 st.success(f"✅ {message}")
                 
                 # Log successful login
-                role = user_data.get("role", "mahasiswa")
-                logger.info(f"Login successful: {email} (Role: {role})")
+                if user_data is not None:
+                    role = user_data.get("role", "mahasiswa")
+                    logger.info(f"Login successful: {email} (Role: {role})")
                 
                 # Redirect based on role
                 st.balloons()

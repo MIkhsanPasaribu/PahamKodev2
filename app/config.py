@@ -11,11 +11,11 @@ class Settings(BaseSettings):
     """Settings untuk aplikasi PahamKode"""
     
     # Database Configuration
-    DATABASE_URL: str
+    DATABASE_URL: str = ""
     DATABASE_NAME: str = "pahamkode-db"
     
     # JWT Authentication
-    JWT_SECRET_KEY: str
+    JWT_SECRET_KEY: str = "dev-secret-key-change-in-production"
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRATION_HOURS: int = 24
     

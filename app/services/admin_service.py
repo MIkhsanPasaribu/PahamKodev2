@@ -12,8 +12,8 @@ import logging
 from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime, timedelta
 
-from app.database.queries import DatabaseQueries
-from app.database.models import SumberDaya, TopikPembelajaran, Exercise
+from database.queries import DatabaseQueries
+from database.models import SumberDaya, TopikPembelajaran, Exercise
 
 logger = logging.getLogger(__name__)
 

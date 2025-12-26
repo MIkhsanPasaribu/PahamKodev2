@@ -16,11 +16,16 @@ import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import pandas as pd
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.admin_service import ambil_analitik_global
-from app.services.autentikasi_service import require_admin
-from app.utils.helpers import format_number, format_percentage, format_datetime
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.admin_service import ambil_analitik_global
+from services.autentikasi_service import require_admin
+from utils.helpers import format_number, format_percentage, format_datetime
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +93,9 @@ st.markdown("---")
 
 try:
     with st.spinner("Memuat data analitik..."):
-        analytics = ambil_analitik_global(queries, period_type)
+        # Ensure period_type is str type
+        periode: str = period_type if isinstance(period_type, str) else "30_hari"
+        analytics = ambil_analitik_global(queries, periode)
     
     
     # ==================== KEY METRICS ====================

@@ -12,10 +12,15 @@ import plotly.express as px
 from datetime import datetime
 import pandas as pd
 import logging
+import sys
+from pathlib import Path
 
-from app.components.sidebar import render_sidebar
-from app.services.autentikasi_service import is_mahasiswa
-from app.utils.helpers import format_number, format_datetime, get_severity_color
+# Add parent directory to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+
+from components.sidebar import render_sidebar
+from services.autentikasi_service import is_mahasiswa
+from utils.helpers import format_number, format_datetime, get_severity_color
 
 logger = logging.getLogger(__name__)
 

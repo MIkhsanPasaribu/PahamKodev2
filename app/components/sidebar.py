@@ -11,7 +11,7 @@ import streamlit as st
 import logging
 from datetime import datetime
 
-from app.components.autentikasi import handle_logout
+from components.autentikasi import handle_logout
 
 logger = logging.getLogger(__name__)
 

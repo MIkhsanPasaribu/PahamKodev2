@@ -14,14 +14,14 @@ from typing import Optional, Dict, Any, Tuple
 from datetime import datetime
 from bson import ObjectId
 
-from app.services.ai_service import (
+from services.ai_service import (
     analisis_error_semantik,
     HasilAnalisis,
     hitung_token_estimasi,
     hitung_biaya_estimasi
 )
-from app.database.queries import DatabaseQueries
-from app.database.models import SubmisiError, MetrikAI
+from database.queries import DatabaseQueries
+from database.models import SubmisiError, MetrikAI
 
 logger = logging.getLogger(__name__)
 

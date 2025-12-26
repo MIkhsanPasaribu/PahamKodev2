@@ -16,7 +16,7 @@ from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
 from datetime import datetime
 
-from app.config import settings
+from config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -155,7 +155,7 @@ PENTING: Penjelasan dalam Bahasa Indonesia yang mudah dipahami!"""
 
 def buat_prompt_analisis_semantik() -> ChatPromptTemplate:
     """Buat prompt template untuk semantic error analysis"""
-    parser = PydanticOutputParser(pydantic_object=HasilAnalisis)
+    parser = PydanticOutputParser(pydantic_object=HasilAnalisis)  # type: ignore
     
     prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT_SEMANTIC_ANALYSIS),
@@ -196,7 +196,7 @@ def analisis_error_semantik(
         llm = dapatkan_llm()
         
         # 2. Setup output parser
-        parser = PydanticOutputParser(pydantic_object=HasilAnalisis)
+        parser = PydanticOutputParser(pydantic_object=HasilAnalisis)  # type: ignore
         
         # 3. Create prompt
         prompt = buat_prompt_analisis_semantik()
